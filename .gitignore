@@ -1,0 +1,24 @@
+# Configuration
+## These files should not be committed to version control
+*.env
+*.ini
+*.conf
+
+# Python Compiled and Cached
+__pycache__/
+*.pyc
+
+# Virtual Environment called env
+[eE]nv/
+
+# Django migrations
+## Migrations should be omitted to prevent conflicts
+**/migrations/**
+!**/migrations
+!**/migrations/__init__.py
+
+# local test db
+*.sqlite3
+
+# Visual Studio files
+.vs/

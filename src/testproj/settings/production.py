@@ -9,8 +9,7 @@ env_config = Config(RepositoryEnv(env_path))
 SECRET_KEY = env_config.get('SECRET_KEY')
 DEBUG = env_config.get('DEBUG',cast=bool)
 # Allowed Hosts should be a list
-ALLOWD_HOSTS = env_config.get('ALLOWED_HOSTS', cast=lambda v: [s.strip() for s in v.split(',')])
-
+ALLOWED_HOSTS = env_config.get('ALLOWED_HOSTS', cast=lambda v: [s.strip() for s in v.split(',')])
 DATABASES = {
     'default': {
         'ENGINE': env_config.get('DB_ENGINE'),
@@ -21,3 +20,11 @@ DATABASES = {
         'PORT': env_config.get('DB_PORT')
     }
 }
+
+SECURE_CONTENT_TYPE_NOSNIFF = True
+SECURE_BROWSER_XSS_FILTER = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+X_FRAME_OPTIONS = 'DENY'
+# Configure NGINX to redirect to HTTPS
+SECURE_SSL_REDIRECT = True
